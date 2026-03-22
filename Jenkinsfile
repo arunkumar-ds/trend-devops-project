@@ -65,3 +65,11 @@ pipeline {
         }
     }
 }
+stage('Verify Deployment') {
+    steps {
+        withKubeConfig([credentialsId: 'k8s-config']) {
+            sh 'kubectl get pods'
+            sh 'kubectl get svc'
+        }
+    }
+}
