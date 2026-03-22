@@ -51,6 +51,7 @@ pipeline {
                     
                     // 3. Force the deployment to use the new image we just pushed
                     sh "kubectl set image deployment/trend-app trend-container=${DOCKER_USER}/${APP_NAME}:${BUILD_NUMBER}"
+		    sh "kubectl apply -f nginx-configmap.yaml"
                 }
             }
         }
