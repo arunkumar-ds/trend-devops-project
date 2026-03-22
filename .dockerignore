@@ -1,0 +1,18 @@
+# Ignore local dependencies
+node_modules/
+npm-debug.log
+build/
+
+# Ignore Infrastructure & CI/CD code (Docker doesn't need these)
+terraform/
+k8s/
+.tfstate
+.tfstate.backup
+Jenkinsfile
+
+# Ignore Git metadata
+.git
+.gitignore
+
+# Ignore local environment secrets
+.env
