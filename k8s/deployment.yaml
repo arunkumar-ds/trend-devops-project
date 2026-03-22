@@ -16,10 +16,13 @@ spec:
     spec:
       containers:
       - name: trend-container
-        # REPLACE 'your-dockerhub-username' with your actual DockerHub ID
         image: arun0801/trend-app:latest
         ports:
         - containerPort: 3000
+        volumeMounts:
+        - name: nginx-conf-vol
+          mountPath: /etc/nginx/conf.d/default.conf
+          subPath: default.conf
         resources:
           limits:
             cpu: "500m"
@@ -27,3 +30,7 @@ spec:
           requests:
             cpu: "250m"
             memory: "256Mi"
+        volumes:
+      - name: nginx-conf-vol
+        configMap:
+          name: nginx-config
